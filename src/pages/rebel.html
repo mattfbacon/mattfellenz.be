@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% set title = 'Rebel!' %}
+{% block content %}
+<main id="content">
+	<h2><a href="/hdcp-master.txt">HDCP Master Key</a></h2>
+	<p>Using this file you can bypass the HDCP scrambling that content providers use to prevent you from watching their content on your chosen hardware. I don't know how to use it, but since there are attempts to supress it I'm making it publicly available on my website.</p>
+	<h2><a href="/css-auth.tar.gz">DeCSS</a></h2>
+	<p>Using this program you can bypass DVD encryption. You will have to compile the C source code. Again, I have not used this nor do I know how, but there are instructions provided.</p>
+	<h2>HD-DVD Decryption Key</h2>
+	<blockquote>09 F9 11 02 9D 74 E3 5B D8 41 56 C5 63 56 88 C0</blockquote>
+	<p>This is the key that can be used to decrypt most HD DVDs. Again, I don't know how to use it.</p>
+	<h2><a href="/public-key.asc">My PGP Key</a></h2>
+	<p>Please use this key for any important communication with me. Instructions for use can be found <a href="https://www.bitcoinnotbombs.com/beginners-guide-to-pgp/">here</a>.</p>
+</main>
+{% endblock %}

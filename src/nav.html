@@ -1,0 +1,15 @@
+<header id="nav">
+	<a id="brand" href="/">Matt Fellenz</a>
+	<nav id="links">
+		<div class="spoiler">
+			<input type="checkbox">
+			<ul class="dropdown_list">
+				<li><a href="https://duome.eu/tonkotsuLover" class="link-green" target="blank" rel="no-referrer">Duome</a></li>
+				<li><a href="https://github.com/mattfbacon" target="blank" rel="no-referrer">GitHub</a></li>
+			</ul>
+		</div>
+		{% if path == 'rebel' %}<b>Rebel!</b>{% else %}<a href="/rebel">Rebel!</a>{% endif %}
+		{% if path == 'projects' %}<b>Projects</b>{% else %}<a href="/projects">Projects</a>{% endif %}
+		{% if path == 'blog' %}<b>Blog</b>{% else %}<a href="/blog">Blog</a>{% endif %}
+	</nav>
+</header>

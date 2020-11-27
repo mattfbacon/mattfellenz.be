@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block styles %}
+<link rel="stylesheet" href="/res/style/blog.css" type="text/css">
+{% endblock %}
+{% block content %}
+<main id="content">
+	<h1 id="{% if slug %}{{slug}}{% else %}{{title | lower | replace(' ', '-')}}{% endif %}" style="margin-bottom:0;">{{title}}</h1>
+	<h5>{{date}}</h5>
+	<div>
+		{% block post %}{% endblock %}
+	</div>
+</main>
+{% endblock %}

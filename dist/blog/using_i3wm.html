@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="The personal website for Matt Fellenz, a web developer.">
+	<title>Using the i3 Window Manager · Matt Fellenz</title>
+	<link rel="stylesheet" href="/res/style/normalize.min.css" type="text/css">
+	<link rel="stylesheet" href="/res/style/milligram.min.css" type="text/css">
+	<link rel="stylesheet" href="https://rsms.me/inter/inter.css" type="text/css">
+	<link rel="stylesheet" href="/res/style/common.css" type="text/css">
+<link rel="stylesheet" href="/res/style/blog.css" type="text/css">
+	<link rel="shortcut icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body style="display:none;">
+<header id="nav">
+	<a id="brand" href="/">Matt Fellenz</a>
+	<nav id="links">
+		<div class="spoiler">
+			<input type="checkbox">
+			<ul class="dropdown_list">
+				<li><a href="https://duome.eu/tonkotsuLover" class="link-green" target="blank" rel="no-referrer">Duome</a></li>
+				<li><a href="https://github.com/mattfbacon" target="blank" rel="no-referrer">GitHub</a></li>
+			</ul>
+		</div>
+<a href="/rebel">Rebel!</a><a href="/projects">Projects</a><a href="/blog">Blog</a>	</nav>
+</header><main id="content">
+	<h1 id="using-i3wm" style="margin-bottom:0;">Using the i3 Window Manager</h1>
+	<h5>2 November, 2020</h5>
+	<div>
+<img src="/res/img/cluttered_desk.jpg" alt="A very messy desk with papers stacked over one another">
+<p>As soon as I started using <a href="https://www.gnome.org/" rel="noopener">GNOME</a>, beautiful as it was, I was slightly bothered by the resource usage (namely the RAM), and its effect on my battery life. I tried alternatives like <a href="https://kde.org/plasma-desktop/" rel="noopener">KDE Plasma</a>, <a href="https://www.xfce.org/" rel="noopener">XFCE</a>, and <a href="https://www.lxde.org/" rel="noopener">LXDE</a>, but none offered enough of a performance boost to justify the smaller feature set.</p>
+<p>It was also around that time that I first heard of tiling window managers. The idea is simple: windows don’t overlap, but instead are resized automatically to fill the available space. (In some, like <a href="https://i3wm.org" rel="noopener">i3</a>, there are floating windows that are taken out of this system, but they are always on top, and it is not recommended to use this window type for anything but dialogs.)</p>
+<p>Why would anyone do this? After all, isn’t the purpose of a window manager to emulate the <a href="https://en.wikipedia.org/wiki/Desktop_metaphor" rel="noopener">desktop metaphor</a>? Well, anyone who’s tried to work with many pieces of paper (what windows are supposed to represent) on a desk has realized that papers are inevitably lost, and even when they aren’t, a lot of time is spent on rearranging papers based on which ones need to be most visible.</p>
+<p>Tiling window managers present an alternative. They don’t do away with the desktop metaphor entirely, but they do deviate from the way physical papers work on a desk. For example, in the most basic setup, opening one window causes it to take up all the available space. Opening another causes the first window to resize itself to take up half the space, with the new window filling the other half. Paper can’t resize like that; windows can. (I don’t have the answer to why windows are resizable in the desktop metaphor if paper can’t be resized.)</p>
+<p>If someone is using a tiling window manager for real work, they’ll probably not just use the default method of arranging windows, which is to divide the desktop into increasingly thin horizontal segments <em>ad infinatum</em>. To tailor the layout, basic commands to change how the windows are arranged are made available: windows can be set up to sit side-by-side (termed <code>splith</code> in i3) or stacked vertically (termed <code>splitv</code>). Additionally, some tiling WMs (including i3) allow containers to show one window taking up the whole space, often navigated with tabs. i3 further distinguishes between horizontal tabs (termed <code>tabbed</code>) and vertical tabs (termed <code>stacking</code>).</p>
+<p>I think that’s enough information about tiling window managers themselves. If you want more information, you can read <a href="https://en.wikipedia.org/wiki/Tiling_window_manager" rel="noopener">the Wikipedia page for tiling window managers</a>. Let’s get into…</p>
+<h2 id="first-days">First Days</h2>
+<p>Coming from a WM like GNOME (and before that, Windows), I had no idea where to even begin with i3, other than how to open a terminal (<code>M-enter</code>) and how to exit (<code>M-S-e</code>), the latter being the first thing I make sure to know after getting <a href="https://www.i-programmer.info/news/90-tools/10806-one-million-programmers-want-to-escape-vim.html" rel="noopener">stuck in Vim</a>.</p>
+<p>The very first time I entered, I opened a terminal, saw that it wasn’t scaled to my HiDPI monitor, and exited. I went back into GNOME and looked up how to make it be scaled. Hmm, add <code>Xft.dpi: 192</code> to <code>~/.Xresources</code>… okay, sure. Go back into i3… Boom, it works!</p>
+<p>This experience was what made me like i3 so much. Something doesn’t work (or doesn’t work the way you want it to, which is almost as bad)? Google it, apply the solution, and you’re golden.</p>
+<h2 id="resource-usage">Resource Usage</h2>
+<p>I said above that I stopped using GNOME (mainly) because of the resource usage. How does i3 compare? Well, right now as I’m writing this, i3 is sitting at 4.1 MiB of RAM, with <a href="https://i3wm.org/i3bar/" rel="noopener">i3bar</a> using 1.6 MiB and <a href="https://github.com/vivien/i3blocks/blob/master/docs/README.adoc" rel="noopener">i3blocks</a> using 132 KiB. All of them are at 0% CPU usage. It’s downright <em>scandalous</em> how few resources they use. I mean, <em>every running instance</em> of Brave uses more RAM than all of these combined! I’m constantly amazed by it, even now. In a world where Zoom uses a gigabyte of memory just to idle in the background, my window manager (including i3bar and i3blocks) uses just over 0.56% of that.</p>
+<h2 id="overall-experience">Overall Experience</h2>
+<p>The biggest mistake I made when I started using i3 was that I thought GNOME and i3 were the same beast: window managers. However, GNOME is more than a window manager: it’s a desktop environment. <a href="https://www.ghacks.net/2008/12/09/get-to-know-linux-desktop-environment-vs-window-manager/" rel="noopener">Here</a>’s a good article explaining the difference in depth, but I’ll try to summarize. A desktop environment adds features on top of a window manager, like automatically mounting disks and handling displays.</p>
+<p>Consequently, the biggest hiccup I had with i3 was when I plugged a monitor into my laptop and… nothing happened. The monitor said “No Signal” and went back into sleep mode. I’m not going to lie; I spent at least an hour on this.</p>
+<p>In the end, the solution lay in writing a shell script to enable or disable the monitor, and running it manually whenever I attach or detach the external monitor. While this originally bothered me—after all, GNOME handled it automatically—I realized that you actually get more freedom from this, because you can keep your multi-monitor layout if you’re just leaving your desk for a second.</p>
+<p>Another thing provided by a desktop environment but not a window manager is a <a href="https://en.wikipedia.org/wiki/Compositing_window_manager" rel="noopener">compositor</a>. In short, a compositor tells all the windows to render themselves in separate buffers off-screen, then <em>composites</em> them together, optionally adding shadows, transparency, and more. In i3 by default, <em>there is simply no transparency</em>. Any window trying to be transparent has either a black or white background (I have not yet discerned how it is decided).</p>
+<p>You can run a compositor yourself, like <a href="https://wiki.archlinux.org/index.php/Picom" rel="noopener"><code>picom</code></a>. However, <code>picom</code>, which advertises itself as a lightweight compositor, uses 17.5 MiB</p>
+<p>One of the most innovative features of i3 to me is the way it handles workspaces. GNOME does it the way you would expect considering the desktop metaphor. Workspaces in the window manager are like physical workspaces, for example the home and the office. When switching between workspaces, all the windows on all monitors that were in the workspace are left behind, unless you take one with you (in GNOME, by using <code>C-S-right/left</code> instead of <code>C-left/right</code>).</p>
+<p>i3 handles this differently. Each monitor has its own workspace, and you can switch between workspaces separately on each monitor. If you think about it, this is required to be able to move windows between monitors in a keyboard-driven WM like i3.</p>
+<p>Like a lot of other features of i3, I originally thought it was confusing and counterintuitive. Now I think it’s the best way to do it.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I hope it’s obvious that I <em>love</em> i3. The intuitive design, the low resource usage, and, most of all, the configuration. Some people advertise tiling window managers as good for programmers. I think of it as good for anyone who wants to use a computer efficiently, and I’m not kidding.</p>
+<h2 id="appendix">Appendix</h2>
+<h3 id="why-dont-you-use-wayland">Why don’t you use Wayland?</h3>
+<p><a href="https://wayland.freedesktop.org/" rel="noopener">Wayland</a> is really cool. However, it is not yet widely supported by software, so it’s inconvenient to use it. Here’s one example: the moment I started using it (using <a href="https://swaywm.org/" rel="noopener">Sway</a>, which bills itself as a drop-in replacement for i3 that works on Wayland) and opened Brave, its HiDPI scaling was very ugly.</p>
+<p>Issues like these are why I can’t use Wayland. X11 is janky, but there’s always a way to fix something. Wayland is sleek, but there are some things that <em>just don’t work</em>, no matter what you do.</p>
+<h3 id="next-steps">Next Steps</h3>
+<p>After gaining some sysadmin confidence by successfully setting up i3, I decided that I wanted to stop using GDM too, which I was still using for my login manager. I installed an <code>xinit</code> alternative called <a href="https://github.com/Earnestly/sx" rel="noopener"><code>sx</code></a>, and wrote a simple Run Commands file, stored in <code>~/.config/sx/sxrc</code>:</p>
+<pre><code>userresources=$HOME/.Xresources
+if [ -f $userresources ]; then
+  xrdb -merge $userresources
+fi
+
+# xinitrc is symlinked to xprofile because for my purposes starting X = starting i3
+source $HOME/.xprofile
+
+exec i3
+</code></pre>
+<p>And, to show how incredibly sleek this is, here’s the <em>entire</em> code for <code>sx</code> (comments removed):</p>
+<pre><code>#!/bin/sh --
+
+cleanup() {
+    if kill -0 "$pid" 2&gt; /dev/null; then
+        kill "$pid"
+        wait "$pid"
+        xorg=$?
+    fi
+
+    if ! stty "$stty"; then
+        stty sane
+    fi
+
+    xauth remove :"$tty"
+
+    exit "${xorg:-0}"
+}
+
+stty=$(stty -g)
+tty=$(tty)
+tty=${tty#/dev/tty}
+
+cfgdir=${XDG_CONFIG_HOME:-$HOME/.config}/sx
+datadir=${XDG_DATA_HOME:-$HOME/.local/share}/sx
+mkdir -p -- "$cfgdir" "$datadir"
+
+export XAUTHORITY="${XAUTHORITY:-$datadir/xauthority}"
+touch -- "$XAUTHORITY"
+
+xauth add :"$tty" MIT-MAGIC-COOKIE-1 "$(od -An -N16 -tx /dev/urandom | tr -d ' ')"
+
+for signal in HUP INT TERM QUIT; do
+    trap 'cleanup; trap - "$signal"; kill -s "$signal" "$$"' "$signal"
+done
+
+trap 'DISPLAY=:$tty exec "${@:-$cfgdir/sxrc}" &amp; wait "$!"' USR1
+
+(trap '' USR1 &amp;&amp; exec Xorg :"$tty" -keeptty vt"$tty" -noreset -auth "$XAUTHORITY") &amp; pid=$!
+wait "$pid"
+cleanup
+</code></pre>
+<p>How simple; how elegant. I mean, it’s a 36 SLOC shell script, for <code>$DEITY</code>'s sake! These two scripts completely replace the jank of GDM.</p>
+<p><strong>This is why I use Linux.</strong> Everything is configurable, replaceable, and there’s always a way to do it, no matter what <em>it</em> is.</p>
+	</div>
+</main>
+</body>
+</html>

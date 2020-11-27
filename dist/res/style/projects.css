@@ -1,0 +1,9 @@
+#content {
+  grid-auto-rows: min-content;
+}
+@media (min-width: 500px) {
+  #content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

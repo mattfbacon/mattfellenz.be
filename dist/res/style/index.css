@@ -1,0 +1,22 @@
+#content {
+  text-align: center;
+}
+#content #hero {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  margin-right: 14px;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+@media (max-width: 550px) {
+  #content #hero {
+    background-image: url("/res/img/portrait-final-normal.svg");
+  }
+}
+@media (min-width: 550px) {
+  #content #hero {
+    background-image: url("/res/img/final-normal.svg");
+  }
+}

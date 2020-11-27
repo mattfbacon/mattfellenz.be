@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% set title = 'Blog' %}
+{% block styles %}
+<link rel="stylesheet" href="/res/style/blog.css" type="text/css">
+{% endblock %}
+{% block content %}
+<main id="content">
+	<ul style="list-style:none;">
+	{% for post in posts %}
+	{% import post as data %}
+		<li><a href="/blog/{{post | replace('.html', '')}}">{{data.title}}</a> ({{data.date}})</li>
+	{% else %}
+		<p>(No posts yet…)</p>
+	{% endfor %}
+	</ul>
+</main>
+{% endblock %}
